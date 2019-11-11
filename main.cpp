@@ -14,7 +14,9 @@ struct tree_t {
     size_t size;
 };
 
+node_t *makeNode(node_t *parent, node_t *left, node_t *right, void *value);
 
+tree_t *makeTree(void *headValue);
 
 int main() {
     return 0;
@@ -27,10 +29,28 @@ int main() {
  */
 
 tree_t *makeTree(void *headValue) {
-    auto *tree = (tree_t *) calloc (1, sizeof(tree_t));
-    auto *head = (node_t *) calloc (1, sizeof(node_t));
-    head->value = headValue;
-    tree->size = 1;
+    auto *tree = (tree_t *) calloc(1, sizeof(tree_t));
+    node_t *head = makeNode(nullptr, nullptr, nullptr, headValue);
     tree->head = head;
     return tree;
+}
+
+/**
+ * Node "constructor" i. e. function that creates tree
+ * @param parent Pointer to parent node
+ * @param left Pointer to left node
+ * @param right Pointer to right node
+ * @param value Pointer to value
+ * @return Pointer to node_t
+ */
+
+node_t *makeNode(node_t *parent, node_t *left, node_t *right, void *value) {
+    auto node = (node_t *) calloc(1, sizeof(node_t));
+
+    node->parent = parent;
+    node->left = left;
+    node->right = right;
+    node->value = value;
+
+    return node;
 }
