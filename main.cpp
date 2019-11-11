@@ -141,3 +141,51 @@ void addLeftSubtree(tree_t *tree, node_t *node, tree_t *subtree) {
     tree->size += subtree->size;
     free(subtree);
 }
+
+/**
+ * Function that adds right node
+ * @param tree Pointer to tree for adding node
+ * @param node Pointer to target node
+ * @param value Pointer to value for new node
+ */
+
+void addRightNode(tree_t *tree, node_t *node, void *value) {
+    assert(node);
+    assert(tree);
+
+    node_t *newNode = makeNode(node, nullptr, nullptr, value);
+    node->right = newNode;
+    tree->size++;
+}
+
+/**
+ * Function that adds node to the right. Due to tree size uncertaincy, function does not handle it
+ * @param tree Pointer to tree for adding node
+ * @param node Pointer to target node
+ * @param existingNode Node for attaching
+ */
+
+void addRightNode(node_t *node, node_t *existingNode) {
+    assert(node);
+    assert(existingNode);
+
+    node->right = existingNode;
+    existingNode->parent = node;
+}
+
+/**
+ * Function that adds subtree to the right
+ * @param tree Pointer to tree for subtree
+ * @param node Pointer to target node
+ * @param subtree Pointer to subtree
+ */
+
+void addRightSubtree(tree_t *tree, node_t *node, tree_t *subtree) {
+    assert(tree);
+    assert(subtree);
+
+    addRightNode(node, subtree->head);
+
+    tree->size += subtree->size;
+    free(subtree);
+}
