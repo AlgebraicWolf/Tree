@@ -201,3 +201,15 @@ node_t *getLeftNode(node_t *node) {
 
     return node->left;
 }
+
+/**
+ * Function that gets right node
+ * @param node Pointer to node
+ * @return Pointer to right node
+ */
+
+node_t *getRightNode(node_t *node) {
+    assert(node);
+
+    return node->right;
+}
