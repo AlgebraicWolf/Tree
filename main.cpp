@@ -24,7 +24,7 @@ void deleteTree(tree_t *tree);
 
 void addLeftNode(tree_t *tree, node_t *node, void *value);
 
-void addLeftNode(tree_t *tree, node_t *node, node_t *existingNode);
+void addLeftNode(node_t *node, node_t *existingNode);
 
 int main() {
     return 0;
@@ -96,9 +96,9 @@ void deleteTree(tree_t *tree) {
 
 /**
  * Function that adds left node
- * @param tree Tree for adding node
- * @param node Target node
- * @param value Value for new node
+ * @param tree Pointer to tree for adding node
+ * @param node Pointer to target node
+ * @param value Pointer to value for new node
  */
 
 void addLeftNode(tree_t *tree, node_t *node, void *value) {
@@ -111,19 +111,33 @@ void addLeftNode(tree_t *tree, node_t *node, void *value) {
 }
 
 /**
- * Function that adds node
- * @param tree Tree for adding node
- * @param node Target node
- * @param existingNode Value for new node
+ * Function that adds node to the left. Due to tree size uncertaincy, function does not handle it
+ * @param tree Pointer to tree for adding node
+ * @param node Pointer to target node
+ * @param existingNode Node for attaching
  */
 
-void addLeftNode(tree_t *tree, node_t *node, node_t *existingNode) {
+void addLeftNode(node_t *node, node_t *existingNode) {
     assert(node);
-    assert(tree);
     assert(existingNode);
 
     node->left = existingNode;
     existingNode->parent = node;
-    tree->size++;
 }
 
+/**
+ * Function that adds subtree to the left
+ * @param tree Pointer to tree for subtree
+ * @param node Pointer to target node
+ * @param subtree Pointer to subtree
+ */
+
+void addLeftSubtree(tree_t *tree, node_t *node, tree_t *subtree) {
+    assert(tree);
+    assert(subtree);
+
+    addLeftNode(node, subtree->head);
+
+    tree->size += subtree->size;
+    free(subtree);
+}
