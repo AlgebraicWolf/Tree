@@ -54,3 +54,20 @@ node_t *makeNode(node_t *parent, node_t *left, node_t *right, void *value) {
 
     return node;
 }
+
+/**
+ * Node "destructor" i. e. function that deletes node AND ALL THE SUBNODES
+ * @param node Pointer to node for deleting
+ */
+
+void deleteNode(node_t *node) {
+    assert(node);
+
+    if(node->left)
+        deleteNode(node->left);
+
+    if(node->right)
+        deleteNode(node->right);
+
+    free(node);
+}
