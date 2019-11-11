@@ -189,3 +189,15 @@ void addRightSubtree(tree_t *tree, node_t *node, tree_t *subtree) {
     tree->size += subtree->size;
     free(subtree);
 }
+
+/**
+ * Function that gets left node
+ * @param node Pointer to node
+ * @return Pointer to left node
+ */
+
+node_t *getLeftNode(node_t *node) {
+    assert(node);
+
+    return node->left;
+}
