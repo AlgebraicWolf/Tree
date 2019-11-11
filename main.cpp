@@ -18,6 +18,10 @@ node_t *makeNode(node_t *parent, node_t *left, node_t *right, void *value);
 
 tree_t *makeTree(void *headValue);
 
+void deleteNode(node_t *node);
+
+void deleteTree(tree_t *tree);
+
 int main() {
     return 0;
 }
@@ -70,4 +74,18 @@ void deleteNode(node_t *node) {
         deleteNode(node->right);
 
     free(node);
+}
+
+/**
+ * Tree "destructor" i. e. function that deletes the whole tree
+ * @param tree Pointer to the tree for deleting
+ */
+
+void deleteTree(tree_t *tree) {
+    assert(tree);
+
+    deleteNode(tree->head);
+    tree->size = 0;
+
+    free(tree);
 }
