@@ -213,3 +213,15 @@ node_t *getRightNode(node_t *node) {
 
     return node->right;
 }
+
+/**
+ * Function that gets parent node
+ * @param node Pointer to node
+ * @return Pointer to parent node
+ */
+
+node_t *getParent(node_t *node) {
+    assert(node);
+
+    return node->parent;
+}
