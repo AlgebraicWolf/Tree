@@ -22,6 +22,10 @@ void deleteNode(node_t *node);
 
 void deleteTree(tree_t *tree);
 
+void addLeftNode(tree_t *tree, node_t *node, void *value);
+
+void addLeftNode(tree_t *tree, node_t *node, node_t *existingNode);
+
 int main() {
     return 0;
 }
@@ -89,3 +93,37 @@ void deleteTree(tree_t *tree) {
 
     free(tree);
 }
+
+/**
+ * Function that adds left node
+ * @param tree Tree for adding node
+ * @param node Target node
+ * @param value Value for new node
+ */
+
+void addLeftNode(tree_t *tree, node_t *node, void *value) {
+    assert(node);
+    assert(tree);
+
+    node_t *newNode = makeNode(node, nullptr, nullptr, value);
+    node->left = newNode;
+    tree->size++;
+}
+
+/**
+ * Function that adds node
+ * @param tree Tree for adding node
+ * @param node Target node
+ * @param existingNode Value for new node
+ */
+
+void addLeftNode(tree_t *tree, node_t *node, node_t *existingNode) {
+    assert(node);
+    assert(tree);
+    assert(existingNode);
+
+    node->left = existingNode;
+    existingNode->parent = node;
+    tree->size++;
+}
+
