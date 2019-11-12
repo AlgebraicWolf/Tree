@@ -2,6 +2,12 @@
 #include <cstdlib>
 #include <cassert>
 
+enum DIRECTION {
+    HEAD,
+    LEFT,
+    RIGHT
+};
+
 struct node_t {
     node_t *left;
     node_t *right;
@@ -16,6 +22,10 @@ struct tree_t {
 
 node_t *makeNode(node_t *parent, node_t *left, node_t *right, void *value);
 
+node_t *getLeftNode(node_t *node);
+
+node_t *getRightNode(node_t *node);
+
 tree_t *makeTree(void *headValue);
 
 void deleteNode(node_t *node);
@@ -26,7 +36,30 @@ void addLeftNode(tree_t *tree, node_t *node, void *value);
 
 void addLeftNode(node_t *node, node_t *existingNode);
 
+void addRightNode(tree_t *tree, node_t *node, void *value);
+
+void addRightNode(node_t *node, node_t *existingNode);
+
+void treeDump(tree_t *tree, char *filename, char *(*valueDump)(void *) = nullptr);
+
+void nodeDump(node_t *node, FILE *dumpFile, DIRECTION dir);
+
+void nodePrint(node_t *node, FILE *dumpFile, DIRECTION dir);
+
 int main() {
+    tree_t *tree = makeTree(nullptr);
+    addLeftNode(tree, tree->head, nullptr);
+    addRightNode(tree, tree->head, nullptr);
+
+    addLeftNode(tree, getRightNode(tree->head), nullptr);
+    addRightNode(tree, getRightNode(tree->head), nullptr);
+
+    addLeftNode(tree, getLeftNode(tree->head), nullptr);
+    addRightNode(tree, getLeftNode(tree->head), nullptr);
+
+    addRightNode(tree, getLeftNode(getRightNode(tree->head)), nullptr);
+
+    treeDump(tree, "testDump.dot");
     return 0;
 }
 
@@ -71,10 +104,10 @@ node_t *makeNode(node_t *parent, node_t *left, node_t *right, void *value) {
 void deleteNode(node_t *node) {
     assert(node);
 
-    if(node->left)
+    if (node->left)
         deleteNode(node->left);
 
-    if(node->right)
+    if (node->right)
         deleteNode(node->right);
 
     free(node);
@@ -225,3 +258,74 @@ node_t *getParent(node_t *node) {
 
     return node->parent;
 }
+
+/**
+ * Function that prints out node declaration in DOT format
+ * @param node Pointer to node_t
+ * @param dumpFile Pointer to FILE
+ * @param dir Node direction (left, right or head)
+ */
+
+void nodePrint(node_t *node, FILE *dumpFile, DIRECTION dir) {
+    fprintf(dumpFile,
+            "node%p[shape=record, label=\"{%p | {PARENT|%p} | {{LEFT |<left> %p} | {RIGHT |<right> %p}}}\", style=filled, ",
+            node, node, node->parent, node->left, node->right);
+    if (dir == RIGHT)
+        fprintf(dumpFile, "fillcolor=springgreen];\n");
+    else if (dir == LEFT)
+        fprintf(dumpFile, "fillcolor=indianred];\n");
+    else if (dir == HEAD)
+        fprintf(dumpFile, "fillcolor=mediumturquoise];\n");
+}
+
+/**
+ * Function that recursively dumps nodes in DOT format
+ * @param node Pointer to node_t
+ * @param dumpFile Pointer to FILE
+ * @param dir Node direction (left, right or head)
+ */
+
+void nodeDump(node_t *node, FILE *dumpFile, DIRECTION dir) {
+    assert(node);
+    assert(dumpFile);
+    if (node->parent)
+        if (dir == LEFT)
+            fprintf(dumpFile, "node%p -> node%p:left;\nnode%p:left -> node%p;\n", node, node->parent, node->parent,
+                    node);
+        else if (dir == RIGHT)
+            fprintf(dumpFile, "node%p -> node%p:right;\nnode%p:right -> node%p;\n", node, node->parent, node->parent,
+                    node);
+
+    if (node->left) {
+        nodePrint(node->left, dumpFile, LEFT);
+        nodeDump(node->left, dumpFile, LEFT);
+    }
+
+    if (node->right) {
+        nodePrint(node->right, dumpFile, RIGHT);
+        nodeDump(node->right, dumpFile, RIGHT);
+    }
+}
+
+/**
+ * Tree dumper
+ * @param tree Pointer to tree_t
+ * @param filename Dump file name
+ * @param valueDump Optional function that renders tree value. Takes void pointer as an argument
+ */
+
+void treeDump(tree_t *tree, char *filename, char *(*valueDump)(void *)) {
+    assert(tree);
+    assert(filename);
+
+    FILE *dumpFile = fopen(filename, "w");
+    fprintf(dumpFile, "digraph {\nconcentrate=true\n");
+
+    nodePrint(tree->head, dumpFile, HEAD);
+    nodeDump(tree->head, dumpFile, HEAD);
+
+    fprintf(dumpFile, "}\n");
+    fclose(dumpFile);
+}
+
+
