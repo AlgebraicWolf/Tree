@@ -46,6 +46,14 @@ void nodeDump(node_t *node, FILE *dumpFile, DIRECTION dir);
 
 void nodePrint(node_t *node, FILE *dumpFile, DIRECTION dir);
 
+void treeSerialize(tree_t *tree, char *filename, char *(serializeValue)(void *));
+
+void nodeSerialize(node_t *node, FILE* serialized, char *(serializeValue)(void *));
+
+char *serializeValue(void *val) {
+    return "STUB";
+}
+
 int main() {
     tree_t *tree = makeTree(nullptr);
     addLeftNode(tree, tree->head, nullptr);
@@ -60,6 +68,7 @@ int main() {
     addRightNode(tree, getLeftNode(getRightNode(tree->head)), nullptr);
 
     treeDump(tree, "testDump.dot");
+    treeSerialize(tree, "serialized.txt", serializeValue);
     return 0;
 }
 
@@ -328,4 +337,34 @@ void treeDump(tree_t *tree, char *filename, char *(*valueDump)(void *)) {
     fclose(dumpFile);
 }
 
+void nodeSerialize(node_t *node, FILE* serialized, char *(serializeValue)(void *)) {
+    assert(serialized);
+    assert(node);
+    assert(serializeValue);
+
+    fprintf(serialized, "{ ");
+    fprintf(serialized, "\"%s\" " ,serializeValue(node->value));
+
+    if (node->left)
+        nodeSerialize(node->left, serialized, serializeValue);
+    else
+        fprintf(serialized, "nil ");
+
+    if (node->right)
+        nodeSerialize(node->right, serialized, serializeValue);
+    else
+        fprintf(serialized, "nil ");
+
+    fprintf(serialized, "} ");
+}
+
+void treeSerialize(tree_t *tree, char *filename, char *(serializeValue)(void *)) {
+    assert(tree);
+    assert(filename);
+    FILE *serialized = fopen(filename, "w");
+
+    nodeSerialize(tree->head, serialized, serializeValue);
+
+    fclose(serialized);
+}
 

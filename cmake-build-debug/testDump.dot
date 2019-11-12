@@ -1,25 +1,25 @@
 digraph {
 concentrate=true
-node0x562f1939ae90[shape=record, label="{0x562f1939ae90 | {PARENT|(nil)} | {{LEFT |<left> 0x562f1939aec0} | {RIGHT |<right> 0x562f1939aef0}}}", style=filled, fillcolor=mediumturquoise];
-node0x562f1939aec0[shape=record, label="{0x562f1939aec0 | {PARENT|0x562f1939ae90} | {{LEFT |<left> 0x562f1939af80} | {RIGHT |<right> 0x562f1939afb0}}}", style=filled, fillcolor=indianred];
-node0x562f1939aec0 -> node0x562f1939ae90:left;
-node0x562f1939ae90:left -> node0x562f1939aec0;
-node0x562f1939af80[shape=record, label="{0x562f1939af80 | {PARENT|0x562f1939aec0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=indianred];
-node0x562f1939af80 -> node0x562f1939aec0:left;
-node0x562f1939aec0:left -> node0x562f1939af80;
-node0x562f1939afb0[shape=record, label="{0x562f1939afb0 | {PARENT|0x562f1939aec0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
-node0x562f1939afb0 -> node0x562f1939aec0:right;
-node0x562f1939aec0:right -> node0x562f1939afb0;
-node0x562f1939aef0[shape=record, label="{0x562f1939aef0 | {PARENT|0x562f1939ae90} | {{LEFT |<left> 0x562f1939af20} | {RIGHT |<right> 0x562f1939af50}}}", style=filled, fillcolor=springgreen];
-node0x562f1939aef0 -> node0x562f1939ae90:right;
-node0x562f1939ae90:right -> node0x562f1939aef0;
-node0x562f1939af20[shape=record, label="{0x562f1939af20 | {PARENT|0x562f1939aef0} | {{LEFT |<left> (nil)} | {RIGHT |<right> 0x562f1939afe0}}}", style=filled, fillcolor=indianred];
-node0x562f1939af20 -> node0x562f1939aef0:left;
-node0x562f1939aef0:left -> node0x562f1939af20;
-node0x562f1939afe0[shape=record, label="{0x562f1939afe0 | {PARENT|0x562f1939af20} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
-node0x562f1939afe0 -> node0x562f1939af20:right;
-node0x562f1939af20:right -> node0x562f1939afe0;
-node0x562f1939af50[shape=record, label="{0x562f1939af50 | {PARENT|0x562f1939aef0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
-node0x562f1939af50 -> node0x562f1939aef0:right;
-node0x562f1939aef0:right -> node0x562f1939af50;
+node0x55d47d9dde90[shape=record, label="{0x55d47d9dde90 | {PARENT|(nil)} | {{LEFT |<left> 0x55d47d9ddec0} | {RIGHT |<right> 0x55d47d9ddef0}}}", style=filled, fillcolor=mediumturquoise];
+node0x55d47d9ddec0[shape=record, label="{0x55d47d9ddec0 | {PARENT|0x55d47d9dde90} | {{LEFT |<left> 0x55d47d9ddf80} | {RIGHT |<right> 0x55d47d9ddfb0}}}", style=filled, fillcolor=indianred];
+node0x55d47d9ddec0 -> node0x55d47d9dde90:left;
+node0x55d47d9dde90:left -> node0x55d47d9ddec0;
+node0x55d47d9ddf80[shape=record, label="{0x55d47d9ddf80 | {PARENT|0x55d47d9ddec0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=indianred];
+node0x55d47d9ddf80 -> node0x55d47d9ddec0:left;
+node0x55d47d9ddec0:left -> node0x55d47d9ddf80;
+node0x55d47d9ddfb0[shape=record, label="{0x55d47d9ddfb0 | {PARENT|0x55d47d9ddec0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x55d47d9ddfb0 -> node0x55d47d9ddec0:right;
+node0x55d47d9ddec0:right -> node0x55d47d9ddfb0;
+node0x55d47d9ddef0[shape=record, label="{0x55d47d9ddef0 | {PARENT|0x55d47d9dde90} | {{LEFT |<left> 0x55d47d9ddf20} | {RIGHT |<right> 0x55d47d9ddf50}}}", style=filled, fillcolor=springgreen];
+node0x55d47d9ddef0 -> node0x55d47d9dde90:right;
+node0x55d47d9dde90:right -> node0x55d47d9ddef0;
+node0x55d47d9ddf20[shape=record, label="{0x55d47d9ddf20 | {PARENT|0x55d47d9ddef0} | {{LEFT |<left> (nil)} | {RIGHT |<right> 0x55d47d9ddfe0}}}", style=filled, fillcolor=indianred];
+node0x55d47d9ddf20 -> node0x55d47d9ddef0:left;
+node0x55d47d9ddef0:left -> node0x55d47d9ddf20;
+node0x55d47d9ddfe0[shape=record, label="{0x55d47d9ddfe0 | {PARENT|0x55d47d9ddf20} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x55d47d9ddfe0 -> node0x55d47d9ddf20:right;
+node0x55d47d9ddf20:right -> node0x55d47d9ddfe0;
+node0x55d47d9ddf50[shape=record, label="{0x55d47d9ddf50 | {PARENT|0x55d47d9ddef0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x55d47d9ddf50 -> node0x55d47d9ddef0:right;
+node0x55d47d9ddef0:right -> node0x55d47d9ddf50;
 }
