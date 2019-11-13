@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cassert>
+#include <cstring>
 
 enum DIRECTION {
     HEAD,
@@ -51,23 +52,32 @@ void treeSerialize(tree_t *tree, char *filename, char *(serializeValue)(void *))
 void nodeSerialize(node_t *node, FILE* serialized, char *(serializeValue)(void *));
 
 char *serializeValue(void *val) {
-    return "STUB";
+    char *str = (char *) calloc(11, sizeof(char));
+    sprintf(str, "%d", *(int *) val);
+    return str;
+}
+
+char *valueDump(void *val) {
+    char *str = (char *) calloc(33, sizeof(char));
+    sprintf(str, "{VALUE | %d}", *(int *) val);
+    return str;
 }
 
 int main() {
-    tree_t *tree = makeTree(nullptr);
-    addLeftNode(tree, tree->head, nullptr);
-    addRightNode(tree, tree->head, nullptr);
+    int vals[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+    tree_t *tree = makeTree(&vals[0]);
+    addLeftNode(tree, tree->head, &vals[1]);
+    addRightNode(tree, tree->head, &vals[2]);
 
-    addLeftNode(tree, getRightNode(tree->head), nullptr);
-    addRightNode(tree, getRightNode(tree->head), nullptr);
+    addLeftNode(tree, getRightNode(tree->head), &vals[3]);
+    addRightNode(tree, getRightNode(tree->head), &vals[4]);
 
-    addLeftNode(tree, getLeftNode(tree->head), nullptr);
-    addRightNode(tree, getLeftNode(tree->head), nullptr);
+    addLeftNode(tree, getLeftNode(tree->head), &vals[5]);
+    addRightNode(tree, getLeftNode(tree->head), &vals[6]);
 
-    addRightNode(tree, getLeftNode(getRightNode(tree->head)), nullptr);
+    addRightNode(tree, getLeftNode(getRightNode(tree->head)), &vals[7]);
 
-    treeDump(tree, "testDump.dot");
+    treeDump(tree, "testDump.dot", valueDump);
     treeSerialize(tree, "serialized.txt", serializeValue);
     return 0;
 }
@@ -275,10 +285,15 @@ node_t *getParent(node_t *node) {
  * @param dir Node direction (left, right or head)
  */
 
-void nodePrint(node_t *node, FILE *dumpFile, DIRECTION dir) {
+void nodePrint(node_t *node, FILE *dumpFile, DIRECTION dir, char *(*valueDump)(void *)) {
     fprintf(dumpFile,
-            "node%p[shape=record, label=\"{%p | {PARENT|%p} | {{LEFT |<left> %p} | {RIGHT |<right> %p}}}\", style=filled, ",
-            node, node, node->parent, node->left, node->right);
+            "node%p[shape=record, label=\"{%p | {PARENT|%p}", node, node, node->parent);
+
+    if(valueDump) {
+        fprintf(dumpFile, "| %s", valueDump(node->value));
+    }
+
+    fprintf(dumpFile, " | {{LEFT |<left> %p} | {RIGHT |<right> %p}}}\", style=filled, ", node->left, node->right);
     if (dir == RIGHT)
         fprintf(dumpFile, "fillcolor=springgreen];\n");
     else if (dir == LEFT)
@@ -294,7 +309,7 @@ void nodePrint(node_t *node, FILE *dumpFile, DIRECTION dir) {
  * @param dir Node direction (left, right or head)
  */
 
-void nodeDump(node_t *node, FILE *dumpFile, DIRECTION dir) {
+void nodeDump(node_t *node, FILE *dumpFile, DIRECTION dir, char *(*valueDump)(void *)) {
     assert(node);
     assert(dumpFile);
     if (node->parent)
@@ -306,13 +321,13 @@ void nodeDump(node_t *node, FILE *dumpFile, DIRECTION dir) {
                     node);
 
     if (node->left) {
-        nodePrint(node->left, dumpFile, LEFT);
-        nodeDump(node->left, dumpFile, LEFT);
+        nodePrint(node->left, dumpFile, LEFT, valueDump);
+        nodeDump(node->left, dumpFile, LEFT, valueDump);
     }
 
     if (node->right) {
-        nodePrint(node->right, dumpFile, RIGHT);
-        nodeDump(node->right, dumpFile, RIGHT);
+        nodePrint(node->right, dumpFile, RIGHT, valueDump);
+        nodeDump(node->right, dumpFile, RIGHT, valueDump);
     }
 }
 
@@ -330,41 +345,91 @@ void treeDump(tree_t *tree, char *filename, char *(*valueDump)(void *)) {
     FILE *dumpFile = fopen(filename, "w");
     fprintf(dumpFile, "digraph {\nconcentrate=true\n");
 
-    nodePrint(tree->head, dumpFile, HEAD);
-    nodeDump(tree->head, dumpFile, HEAD);
+    nodePrint(tree->head, dumpFile, HEAD, valueDump);
+    nodeDump(tree->head, dumpFile, HEAD, valueDump);
 
     fprintf(dumpFile, "}\n");
     fclose(dumpFile);
 }
+
+/**
+ * Function that recursively serializes nodes
+ * @param node Pointer to node_t
+ * @param serialized Pointer to FILE to write to
+ * @param serializeValue Pointer to value serializer function
+ */
 
 void nodeSerialize(node_t *node, FILE* serialized, char *(serializeValue)(void *)) {
     assert(serialized);
     assert(node);
     assert(serializeValue);
 
-    fprintf(serialized, "{ ");
+
     fprintf(serialized, "\"%s\" " ,serializeValue(node->value));
 
-    if (node->left)
+    if (node->left) {
+        fprintf(serialized, "{ ");
         nodeSerialize(node->left, serialized, serializeValue);
-    else
-        fprintf(serialized, "nil ");
+        fprintf(serialized, "} ");
+    }
+    else if(node->right)
+        fprintf(serialized, "$ ");
 
-    if (node->right)
+    if (node->right) {
+        fprintf(serialized, "{ ");
         nodeSerialize(node->right, serialized, serializeValue);
-    else
-        fprintf(serialized, "nil ");
-
-    fprintf(serialized, "} ");
+        fprintf(serialized, "} ");
+    }
+    //else
+        //fprintf(serialized, "$ ");
 }
+
+/**
+ * Function that serializes tree
+ * @param tree Pointer to tree_t
+ * @param filename Filename to write to
+ * @param serializeValue Function that serializes value
+ */
 
 void treeSerialize(tree_t *tree, char *filename, char *(serializeValue)(void *)) {
     assert(tree);
     assert(filename);
     FILE *serialized = fopen(filename, "w");
+    fprintf(serialized, "{ ");
 
     nodeSerialize(tree->head, serialized, serializeValue);
+
+    fprintf(serialized, "}");
 
     fclose(serialized);
 }
 
+tree_t *treeDeserialize(char *serialized, char *(*deserializeValue)(char *)) {
+    assert(serialized);
+    assert(deserializeValue);
+    tree_t *restored = makeTree(nullptr);
+}
+
+void nodeDeserialize(node_t *node, char *serialized, void *(*deserializeValue)(char *)) {
+    assert(node);
+    assert(serialized);
+
+    serialized = strchr(serialized, '{');
+    char *end = strrchr(serialized, '}');
+
+    *end = '\0';
+
+    char *valStart = strchr(serialized, '"') + 1;
+    char *valEnd = strchr(valStart, '"');
+
+    *valEnd = '\0';
+    node->value = deserializeValue(valStart);
+
+    serialized = valEnd + 1;
+
+    char *closestNil = strchr(serialized, '$');
+    char *closestArg = strchr(serialized, '"');
+    if (!closestArg && !closestNil)
+        return;
+    else if (closestArg == nullptr);
+}

@@ -1,25 +1,25 @@
 digraph {
 concentrate=true
-node0x55d47d9dde90[shape=record, label="{0x55d47d9dde90 | {PARENT|(nil)} | {{LEFT |<left> 0x55d47d9ddec0} | {RIGHT |<right> 0x55d47d9ddef0}}}", style=filled, fillcolor=mediumturquoise];
-node0x55d47d9ddec0[shape=record, label="{0x55d47d9ddec0 | {PARENT|0x55d47d9dde90} | {{LEFT |<left> 0x55d47d9ddf80} | {RIGHT |<right> 0x55d47d9ddfb0}}}", style=filled, fillcolor=indianred];
-node0x55d47d9ddec0 -> node0x55d47d9dde90:left;
-node0x55d47d9dde90:left -> node0x55d47d9ddec0;
-node0x55d47d9ddf80[shape=record, label="{0x55d47d9ddf80 | {PARENT|0x55d47d9ddec0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=indianred];
-node0x55d47d9ddf80 -> node0x55d47d9ddec0:left;
-node0x55d47d9ddec0:left -> node0x55d47d9ddf80;
-node0x55d47d9ddfb0[shape=record, label="{0x55d47d9ddfb0 | {PARENT|0x55d47d9ddec0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
-node0x55d47d9ddfb0 -> node0x55d47d9ddec0:right;
-node0x55d47d9ddec0:right -> node0x55d47d9ddfb0;
-node0x55d47d9ddef0[shape=record, label="{0x55d47d9ddef0 | {PARENT|0x55d47d9dde90} | {{LEFT |<left> 0x55d47d9ddf20} | {RIGHT |<right> 0x55d47d9ddf50}}}", style=filled, fillcolor=springgreen];
-node0x55d47d9ddef0 -> node0x55d47d9dde90:right;
-node0x55d47d9dde90:right -> node0x55d47d9ddef0;
-node0x55d47d9ddf20[shape=record, label="{0x55d47d9ddf20 | {PARENT|0x55d47d9ddef0} | {{LEFT |<left> (nil)} | {RIGHT |<right> 0x55d47d9ddfe0}}}", style=filled, fillcolor=indianred];
-node0x55d47d9ddf20 -> node0x55d47d9ddef0:left;
-node0x55d47d9ddef0:left -> node0x55d47d9ddf20;
-node0x55d47d9ddfe0[shape=record, label="{0x55d47d9ddfe0 | {PARENT|0x55d47d9ddf20} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
-node0x55d47d9ddfe0 -> node0x55d47d9ddf20:right;
-node0x55d47d9ddf20:right -> node0x55d47d9ddfe0;
-node0x55d47d9ddf50[shape=record, label="{0x55d47d9ddf50 | {PARENT|0x55d47d9ddef0} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
-node0x55d47d9ddf50 -> node0x55d47d9ddef0:right;
-node0x55d47d9ddef0:right -> node0x55d47d9ddf50;
+node0x5598b46efe90[shape=record, label="{0x5598b46efe90 | {PARENT|(nil)}| {VALUE | 1} | {{LEFT |<left> 0x5598b46efec0} | {RIGHT |<right> 0x5598b46efef0}}}", style=filled, fillcolor=mediumturquoise];
+node0x5598b46efec0[shape=record, label="{0x5598b46efec0 | {PARENT|0x5598b46efe90}| {VALUE | 2} | {{LEFT |<left> 0x5598b46eff80} | {RIGHT |<right> 0x5598b46effb0}}}", style=filled, fillcolor=indianred];
+node0x5598b46efec0 -> node0x5598b46efe90:left;
+node0x5598b46efe90:left -> node0x5598b46efec0;
+node0x5598b46eff80[shape=record, label="{0x5598b46eff80 | {PARENT|0x5598b46efec0}| {VALUE | 6} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=indianred];
+node0x5598b46eff80 -> node0x5598b46efec0:left;
+node0x5598b46efec0:left -> node0x5598b46eff80;
+node0x5598b46effb0[shape=record, label="{0x5598b46effb0 | {PARENT|0x5598b46efec0}| {VALUE | 7} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x5598b46effb0 -> node0x5598b46efec0:right;
+node0x5598b46efec0:right -> node0x5598b46effb0;
+node0x5598b46efef0[shape=record, label="{0x5598b46efef0 | {PARENT|0x5598b46efe90}| {VALUE | 3} | {{LEFT |<left> 0x5598b46eff20} | {RIGHT |<right> 0x5598b46eff50}}}", style=filled, fillcolor=springgreen];
+node0x5598b46efef0 -> node0x5598b46efe90:right;
+node0x5598b46efe90:right -> node0x5598b46efef0;
+node0x5598b46eff20[shape=record, label="{0x5598b46eff20 | {PARENT|0x5598b46efef0}| {VALUE | 4} | {{LEFT |<left> (nil)} | {RIGHT |<right> 0x5598b46effe0}}}", style=filled, fillcolor=indianred];
+node0x5598b46eff20 -> node0x5598b46efef0:left;
+node0x5598b46efef0:left -> node0x5598b46eff20;
+node0x5598b46effe0[shape=record, label="{0x5598b46effe0 | {PARENT|0x5598b46eff20}| {VALUE | 8} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x5598b46effe0 -> node0x5598b46eff20:right;
+node0x5598b46eff20:right -> node0x5598b46effe0;
+node0x5598b46eff50[shape=record, label="{0x5598b46eff50 | {PARENT|0x5598b46efef0}| {VALUE | 5} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x5598b46eff50 -> node0x5598b46efef0:right;
+node0x5598b46efef0:right -> node0x5598b46eff50;
 }
