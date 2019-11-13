@@ -79,6 +79,7 @@ Tree_EXTERNAL_OBJECTS =
 
 Tree: CMakeFiles/Tree.dir/main.cpp.o
 Tree: CMakeFiles/Tree.dir/build.make
+Tree: libTreeLib.a
 Tree: CMakeFiles/Tree.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Tree"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Tree.dir/link.txt --verbose=$(VERBOSE)

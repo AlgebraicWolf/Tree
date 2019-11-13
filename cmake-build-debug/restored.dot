@@ -1,0 +1,25 @@
+digraph {
+concentrate=true
+node0x563f9062f120[shape=record, label="{0x563f9062f120 | {PARENT|(nil)}| {VALUE | 1} | {{LEFT |<left> 0x563f9062f170} | {RIGHT |<right> 0x563f9062f260}}}", style=filled, fillcolor=mediumturquoise];
+node0x563f9062f170[shape=record, label="{0x563f9062f170 | {PARENT|0x563f9062f120}| {VALUE | 2} | {{LEFT |<left> 0x563f9062f1c0} | {RIGHT |<right> 0x563f9062f210}}}", style=filled, fillcolor=indianred];
+node0x563f9062f170 -> node0x563f9062f120:left;
+node0x563f9062f120:left -> node0x563f9062f170;
+node0x563f9062f1c0[shape=record, label="{0x563f9062f1c0 | {PARENT|0x563f9062f170}| {VALUE | 6} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=indianred];
+node0x563f9062f1c0 -> node0x563f9062f170:left;
+node0x563f9062f170:left -> node0x563f9062f1c0;
+node0x563f9062f210[shape=record, label="{0x563f9062f210 | {PARENT|0x563f9062f170}| {VALUE | 7} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x563f9062f210 -> node0x563f9062f170:right;
+node0x563f9062f170:right -> node0x563f9062f210;
+node0x563f9062f260[shape=record, label="{0x563f9062f260 | {PARENT|0x563f9062f120}| {VALUE | 3} | {{LEFT |<left> 0x563f9062f2b0} | {RIGHT |<right> 0x563f9062f350}}}", style=filled, fillcolor=springgreen];
+node0x563f9062f260 -> node0x563f9062f120:right;
+node0x563f9062f120:right -> node0x563f9062f260;
+node0x563f9062f2b0[shape=record, label="{0x563f9062f2b0 | {PARENT|0x563f9062f260}| {VALUE | 4} | {{LEFT |<left> (nil)} | {RIGHT |<right> 0x563f9062f300}}}", style=filled, fillcolor=indianred];
+node0x563f9062f2b0 -> node0x563f9062f260:left;
+node0x563f9062f260:left -> node0x563f9062f2b0;
+node0x563f9062f300[shape=record, label="{0x563f9062f300 | {PARENT|0x563f9062f2b0}| {VALUE | 8} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x563f9062f300 -> node0x563f9062f2b0:right;
+node0x563f9062f2b0:right -> node0x563f9062f300;
+node0x563f9062f350[shape=record, label="{0x563f9062f350 | {PARENT|0x563f9062f260}| {VALUE | 5} | {{LEFT |<left> (nil)} | {RIGHT |<right> (nil)}}}", style=filled, fillcolor=springgreen];
+node0x563f9062f350 -> node0x563f9062f260:right;
+node0x563f9062f260:right -> node0x563f9062f350;
+}

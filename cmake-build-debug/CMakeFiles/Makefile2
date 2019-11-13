@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/alexey/Programming/Tree/cmake-build-debug
 
 # The main recursive "clean" target.
 clean: CMakeFiles/Tree.dir/clean
+clean: CMakeFiles/TreeLib.dir/clean
 
 .PHONY : clean
 
@@ -71,7 +72,7 @@ clean: CMakeFiles/Tree.dir/clean
 # Target rules for target CMakeFiles/Tree.dir
 
 # All Build rule for target.
-CMakeFiles/Tree.dir/all:
+CMakeFiles/Tree.dir/all: CMakeFiles/TreeLib.dir/all
 	$(MAKE) -f CMakeFiles/Tree.dir/build.make CMakeFiles/Tree.dir/depend
 	$(MAKE) -f CMakeFiles/Tree.dir/build.make CMakeFiles/Tree.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Tree"
@@ -84,7 +85,7 @@ all: CMakeFiles/Tree.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Tree.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Tree.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Tree.dir/rule
@@ -98,6 +99,38 @@ Tree: CMakeFiles/Tree.dir/rule
 CMakeFiles/Tree.dir/clean:
 	$(MAKE) -f CMakeFiles/Tree.dir/build.make CMakeFiles/Tree.dir/clean
 .PHONY : CMakeFiles/Tree.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/TreeLib.dir
+
+# All Build rule for target.
+CMakeFiles/TreeLib.dir/all:
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/depend
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target TreeLib"
+.PHONY : CMakeFiles/TreeLib.dir/all
+
+# Include target in all.
+all: CMakeFiles/TreeLib.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/TreeLib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TreeLib.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alexey/Programming/Tree/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/TreeLib.dir/rule
+
+# Convenience name for target.
+TreeLib: CMakeFiles/TreeLib.dir/rule
+
+.PHONY : TreeLib
+
+# clean rule for target.
+CMakeFiles/TreeLib.dir/clean:
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/clean
+.PHONY : CMakeFiles/TreeLib.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

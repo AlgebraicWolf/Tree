@@ -6,25 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/alexey/Programming/Tree/Tree.h
-cstdlib
--
-cstdio
--
-cassert
--
-cstring
--
-
-/home/alexey/Programming/Tree/main.cpp
-cstdio
--
-cstdlib
--
-cassert
--
-cstring
--
+/home/alexey/Programming/Tree/Tree.cpp
 Tree.h
 /home/alexey/Programming/Tree/Tree.h
+
+/home/alexey/Programming/Tree/Tree.h
+cstdlib
+-
+cstdio
+-
+cassert
+-
+cstring
+-
 

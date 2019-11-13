@@ -1,1 +1,1 @@
-/usr/bin/g++  -g   CMakeFiles/Tree.dir/main.cpp.o  -o Tree 
+/usr/bin/g++  -g   CMakeFiles/Tree.dir/main.cpp.o  -o Tree libTreeLib.a 

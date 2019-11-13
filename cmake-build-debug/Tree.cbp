@@ -81,7 +81,57 @@
 					<DistClean command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="TreeLib">
+				<Option output="/home/alexey/Programming/Tree/cmake-build-debug/libTreeLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alexey/Programming/Tree/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 TreeLib"/>
+					<CompileFile command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TreeLib/fast">
+				<Option output="/home/alexey/Programming/Tree/cmake-build-debug/libTreeLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alexey/Programming/Tree/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 TreeLib/fast"/>
+					<CompileFile command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="make -j4 -f &quot;/home/alexey/Programming/Tree/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
+		<Unit filename="/home/alexey/Programming/Tree/Tree.cpp">
+			<Option target="TreeLib"/>
+		</Unit>
+		<Unit filename="/home/alexey/Programming/Tree/Tree.h">
+			<Option target="TreeLib"/>
+		</Unit>
 		<Unit filename="/home/alexey/Programming/Tree/main.cpp">
 			<Option target="Tree"/>
 		</Unit>

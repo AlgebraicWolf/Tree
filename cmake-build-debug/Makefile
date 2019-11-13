@@ -123,6 +123,46 @@ Tree/fast:
 	$(MAKE) -f CMakeFiles/Tree.dir/build.make CMakeFiles/Tree.dir/build
 .PHONY : Tree/fast
 
+#=============================================================================
+# Target rules for targets named TreeLib
+
+# Build rule for target.
+TreeLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TreeLib
+.PHONY : TreeLib
+
+# fast build rule for target.
+TreeLib/fast:
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/build
+.PHONY : TreeLib/fast
+
+Tree.o: Tree.cpp.o
+
+.PHONY : Tree.o
+
+# target to build an object file
+Tree.cpp.o:
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/Tree.cpp.o
+.PHONY : Tree.cpp.o
+
+Tree.i: Tree.cpp.i
+
+.PHONY : Tree.i
+
+# target to preprocess a source file
+Tree.cpp.i:
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/Tree.cpp.i
+.PHONY : Tree.cpp.i
+
+Tree.s: Tree.cpp.s
+
+.PHONY : Tree.s
+
+# target to generate assembly for a file
+Tree.cpp.s:
+	$(MAKE) -f CMakeFiles/TreeLib.dir/build.make CMakeFiles/TreeLib.dir/Tree.cpp.s
+.PHONY : Tree.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +199,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Tree"
 	@echo "... edit_cache"
+	@echo "... TreeLib"
+	@echo "... Tree.o"
+	@echo "... Tree.i"
+	@echo "... Tree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
