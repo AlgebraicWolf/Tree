@@ -39,6 +39,7 @@ int main() {
 //    treeDump(tree, "testDump.dot", valueDump);
 //    treeSerialize(tree, "serialized.txt", serializeValue);
 //    return 0;
+
     FILE *ser = fopen("serialized.txt", "r");
     fseek(ser, 0, SEEK_END);
     int len = ftell(ser);
